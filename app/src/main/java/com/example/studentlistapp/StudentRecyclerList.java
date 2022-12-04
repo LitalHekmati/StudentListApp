@@ -17,6 +17,8 @@ import java.util.List;
 
 public class StudentRecyclerList extends AppCompatActivity {
     List<Student> data;
+    RecyclerView list;
+    StudentRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +26,11 @@ public class StudentRecyclerList extends AppCompatActivity {
         setContentView(R.layout.activity_student_recycler_list);
 
         data = Model.instance().getAllStudents();
-        RecyclerView list = findViewById(R.id.studentrecycler_list);
+        list = findViewById(R.id.studentrecycler_list);
         list.setHasFixedSize(true);
 
         list.setLayoutManager(new LinearLayoutManager(this)); //define the recycler view to be a list
-        StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
+        adapter = new StudentRecyclerAdapter();
         list.setAdapter(adapter);
 
 
@@ -43,7 +45,12 @@ public class StudentRecyclerList extends AppCompatActivity {
         );
     }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        list.setAdapter(adapter);
+    }
+    //--------------------- view holder ---------------------------
     class StudentViewHolder extends RecyclerView.ViewHolder{
         TextView nameTv;
         TextView idTv;
@@ -78,9 +85,15 @@ public class StudentRecyclerList extends AppCompatActivity {
         }
     }
 
+
+    //---------------------OnItemClickListener ---------------------------
     public interface OnItemClickListener{
         void onItemClick(int pos);
     }
+
+
+
+    //---------------------Recycler adapter ---------------------------
     class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHolder>{
         OnItemClickListener listener;
         void setOnItemClickListener(OnItemClickListener listener){
