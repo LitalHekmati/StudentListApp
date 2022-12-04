@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.studentlistapp.Model.Model;
 import com.example.studentlistapp.Model.Student;
@@ -45,8 +43,6 @@ public class StudentEditActivity extends AppCompatActivity {
         save.setOnClickListener(view -> {
             this.bindBack(pos);
             finish();
-            Log.d("tag",""+nameTv.getText().toString());
-
 
         });
 
