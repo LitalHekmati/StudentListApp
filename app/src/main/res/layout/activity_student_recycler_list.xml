@@ -17,12 +17,16 @@
 
     <Button
         android:id="@+id/studentRecycler_add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="61dp"
+        android:layout_height="45dp"
         android:layout_marginStart="270dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="+ "
+        android:background="@android:drawable/ic_input_add"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
