@@ -23,7 +23,6 @@ public class StudentDetailsActivity extends AppCompatActivity {
     Intent thisI;
     int pos;
     Student st;
-    int delete;
     public Intent editI;
     @SuppressLint("MissingInflatedId")
     @Override
