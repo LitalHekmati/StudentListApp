@@ -15,6 +15,10 @@ public class Model {
         }
     }
 
+    public void deleteStudent(int pos){
+        data.remove(pos);
+    }
+
     List<Student> data = new LinkedList<>();
     public List<Student> getAllStudents(){
         return data;
