@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.example.studentlistapp.Model.Model;
@@ -19,7 +21,9 @@ public class StudentRecyclerList extends AppCompatActivity {
     List<Student> data;
     RecyclerView list;
     StudentRecyclerAdapter adapter;
+    Button add;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,13 @@ public class StudentRecyclerList extends AppCompatActivity {
         adapter = new StudentRecyclerAdapter();
         list.setAdapter(adapter);
 
+        add=findViewById(R.id.studentRecycler_add_btn);
+
+        add.setOnClickListener(view->{
+            Intent addStudentIntent = new Intent(this,AddStudentActivity.class);
+            startActivity(addStudentIntent);
+
+        });
 
         adapter.setOnItemClickListener((int pos)-> {
 
