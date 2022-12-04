@@ -2,29 +2,46 @@ package com.example.studentlistapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class AddStudentActivity extends AppCompatActivity {
+import com.example.studentlistapp.Model.Model;
+import com.example.studentlistapp.Model.Student;
 
+import java.util.List;
+
+public class AddStudentActivity extends AppCompatActivity {
+    List<Student> data = Model.instance().getAllStudents();
+    EditText namePt, idPt, phonePt, addressPt;
+    CheckBox cb;
+    Button cancel,save;
+    Intent addI;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
-        EditText nameEt = findViewById(R.id.addstudent_name_et);
-        EditText idEt = findViewById(R.id.addstudent_id_et);
-        TextView messageTv = findViewById(R.id.addstudent_message);
-        Button saveBtn = findViewById(R.id.student_details_back_btn);
-        Button cancelBtn = findViewById(R.id.addstudent_cancell_btn);
+        namePt = (EditText)findViewById(R.id.student_add_st_Pt_name);
+        idPt = findViewById(R.id.student_add_st_Pt_id);
+        phonePt=findViewById(R.id.student_add_st_Pt_phone);
+        addressPt=findViewById(R.id.student_add_st_Pt_address);
+        cb = findViewById(R.id.student_add_st_cb);
+        cancel=findViewById(R.id.student_add_st_cancel_btn);
+        save=findViewById(R.id.student_add_st_save_btn);
 
-        saveBtn.setOnClickListener(view -> {
-            String name = nameEt.getText().toString();
-            messageTv.setText(name);
+
+        cancel.setOnClickListener(view -> finish());
+        save.setOnClickListener((view)->{
+            Student st=new Student(namePt.getText().toString(),idPt.getText().toString(),phonePt.getText().toString(),addressPt.getText().toString(),"",cb.isChecked());
+            data.add(st);
+            finish();
         });
 
-        cancelBtn.setOnClickListener(view -> finish());
     }
 }

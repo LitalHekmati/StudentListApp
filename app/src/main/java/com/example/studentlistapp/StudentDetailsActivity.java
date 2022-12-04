@@ -25,6 +25,8 @@ public class StudentDetailsActivity extends AppCompatActivity {
     Intent thisI;
     int pos;
     Student st;
+    int delete;
+    public Intent editI;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         this.bind(st,pos);
 
         edit.setOnClickListener(view -> {
-            Intent editI = new Intent(this, StudentEditActivity.class);
+            editI = new Intent(this, StudentEditActivity.class);
             editI.putExtra("pos",pos);
             startActivity(editI);
 
@@ -70,7 +72,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         bind(st,pos);
-
-
     }
+
+
 }

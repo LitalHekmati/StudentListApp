@@ -52,9 +52,8 @@ public class StudentEditActivity extends AppCompatActivity {
 
         delete.setOnClickListener(view->{
             Model.instance().deleteStudent(pos);
-            data=Model.instance().getAllStudents();
-            finish();
-
+            Intent deleteI = new Intent(this, StudentRecyclerList.class);
+            startActivity(deleteI);
 
         });
         cancel.setOnClickListener(view -> finish());
