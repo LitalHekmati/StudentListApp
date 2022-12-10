@@ -60,7 +60,8 @@ public class StudentRecyclerList extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        list.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        //list.setAdapter(adapter);
     }
     //--------------------- view holder ---------------------------
     class StudentViewHolder extends RecyclerView.ViewHolder{

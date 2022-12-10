@@ -1,5 +1,6 @@
 package com.example.studentlistapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -24,6 +25,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
     int pos;
     Student st;
     public Intent editI;
+    int REQUEST_CODE=1;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +49,21 @@ public class StudentDetailsActivity extends AppCompatActivity {
         edit.setOnClickListener(view -> {
             editI = new Intent(this, StudentEditActivity.class);
             editI.putExtra("pos",pos);
-            startActivity(editI);
+            startActivityForResult(editI,REQUEST_CODE);
 
         });
 
         back.setOnClickListener(view -> finish());
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String result = data.getStringExtra("result");
+        if(result.equals("delete"))
+            finish();
+
 
     }
 

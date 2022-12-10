@@ -42,17 +42,30 @@ public class StudentEditActivity extends AppCompatActivity {
 
         save.setOnClickListener(view -> {
             this.bindBack(pos);
+            Intent result = new Intent();
+            result.putExtra("result", "save");
+            setResult(RESULT_OK, result);
             finish();
 
         });
 
         delete.setOnClickListener(view->{
             Model.instance().deleteStudent(pos);
-            Intent deleteI = new Intent(this, StudentRecyclerList.class);
-            startActivity(deleteI);
+            Intent result = new Intent();
+            result.putExtra("result", "delete");
+            setResult(RESULT_OK, result);
+            finish();
 
+            //Intent deleteI = new Intent(this, StudentRecyclerList.class);
+            //startActivity(deleteI);
         });
-        cancel.setOnClickListener(view -> finish());
+        cancel.setOnClickListener(view ->
+        {
+            Intent result = new Intent();
+            result.putExtra("result", "cancel");
+            setResult(RESULT_OK, result);
+            finish();
+        });
 
     }
 
